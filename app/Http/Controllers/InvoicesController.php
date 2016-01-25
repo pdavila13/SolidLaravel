@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Invoices;
-use Illuminate\Http\Request;
+use App\Repositories\InvoiceRepository;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Repositories\RepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -14,6 +13,18 @@ use Illuminate\Support\Facades\Auth;
  * @package App\Http\Controllers
  */
 class InvoicesController extends Controller {
+
+    protected $repo;
+
+    /**
+     * InvoicesController constructor.
+     * @param $repo
+     *
+     * DEPENDENCY INJECTION
+     */
+    public function __construct(RepositoryInterface $repo) {
+        $this->repo = $repo;
+    }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -24,28 +35,14 @@ class InvoicesController extends Controller {
             return "Forbidden!";
         }
 
-        $database_invoices = $this->getAllInvoicesFromDatabase();
-
-        $invoices = $this->transform($database_invoices);
+        $invoices = $this->transform($this->repo->all());
 
 //      return view('invoices');
         return view('invoices',compact('invoices'));
-
 //      $data['invoices'] = $invoices;
 //      return view('invoices',$data);
     }
 
-    /**
-     * @return mixed
-     */
-    private function getAllInvoicesFromDatabase() {
-        return Invoices::all();
-    }
-
-    /**
-     * @param $database_invoices
-     * @return mixed
-     */
     private function transform($database_invoices) {
         //Nothing here -> no transformations example
         return $database_invoices;
