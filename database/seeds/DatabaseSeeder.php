@@ -3,6 +3,9 @@
 use App\Invoices;
 use Illuminate\Database\Seeder;
 
+/**
+ * Class DatabaseSeeder
+ */
 class DatabaseSeeder extends Seeder {
 
     /**
@@ -17,6 +20,9 @@ class DatabaseSeeder extends Seeder {
         $this->seedInvoices($faker);
     }
 
+    /**
+     * @param $faker
+     */
     private function seedInvoices($faker) {
         foreach (range(0,100) as $number) {
             $invoice = new Invoices();
