@@ -26,6 +26,7 @@
 
                     <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
+
                             <tr>
                                 <th>Id</th>
                                 <th>Name</th>
@@ -33,14 +34,17 @@
                                 <th>Updated at</th>
                                 <th>Total</th>
                             </tr>
-                            
-                            <tr>
-                                <td>183</td>
-                                <td>John Doe</td>
-                                <td>11-7-2014</td>
-                                <td><span class="label label-success">Approved</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            </tr>
+
+                            @foreach($invoices as $invoice)
+                                <tr>
+                                    <td>{{ $invoice->id }}</td>
+                                    <td>{{ $invoice->name }}</td>
+                                    <td>{{ $invoice->created_at }}</td>
+                                    <td>{{ $invoice->updated_at }}</td>
+                                    <td>{{ $invoice->totalAmmount }}€</td>
+                                </tr>
+                            @endforeach
+
                         </table>
                     </div> <!-- /.box-body -->
                 </div> <!-- /.box -->
