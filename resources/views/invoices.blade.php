@@ -7,7 +7,7 @@
 @section('main-content')
     <div class="container spark-screen">
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-11">
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">Invoices</h3>

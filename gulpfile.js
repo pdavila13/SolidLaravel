@@ -15,4 +15,18 @@ elixir(function(mix) {
     mix.less('app.less');
     mix.less('admin-lte/AdminLTE.less');
     mix.less('bootstrap/bootstrap.less');
+
+    mix.copy('node_modules/sweetalert/dist/sweetalert.min.js','resources/assets/js')
+    mix.copy('node_modules/sweetalert/dist/sweetalert-dev.js','resources/assets/js')
+    mix.copy('node_modules/sweetalert/dist/sweetalert.css','resources/assets/css')
+
+    mix.copy('bower_components/jquery-pjax/jquery.pjax.js','resources/assets/js')
+
+    mix.scripts([
+       'sweetalert.dev.js'
+    ]);
+
+    mix.styles([
+       'sweetalert.css'
+    ]);
 });
