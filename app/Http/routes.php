@@ -53,5 +53,8 @@ Route::group(['middleware' => 'web','pjax'], function () {
     Route::get('apartat3',function() {
         return view ('apartat3');
     });
+
+
 });
 
+include "test-router.php";
