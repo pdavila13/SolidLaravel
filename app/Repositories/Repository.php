@@ -1,19 +1,49 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: pdavila
+ * Date: 9/02/16
+ * Time: 11:05
+ */
 
 namespace App\Repositories;
-use App\Invoices;
+
+use App\User;
+use Illuminate\Database\Eloquent\Model;
+use Mockery\CountValidator\Exception;
 
 /**
- * Class InvoiceRepository
+ * Class UserRepository
  * @package App\Repositories
  */
-class InvoiceRepository implements RepositoryInterface {
+abstract class Repository implements RepositoryInterface {
+
+    protected $model;
 
     /**
+     * UserRepository constructor.
+     * @param $model
+     */
+    public function __construct() {
+        $this->model = $this->makeModel();
+    }
+
+    abstract function model();
+
+    public function makeModel() {
+        $model = App::make($this->model());
+
+        if (!$model instanceof Model) { throw new Exception; }
+
+        return $model;
+    }
+
+    /**
+     * @param array $columns
      * @return mixed
      */
     public function all() {
-        return Invoices::all();
+        return $this->model->all();
     }
 
     /**
