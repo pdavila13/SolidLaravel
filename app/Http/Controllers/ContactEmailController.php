@@ -16,7 +16,7 @@ class ContactEmailController extends Controller {
 
         $this->sendEmail();
 
-        $request->session()->flash('notifications', 'All OK');
+        $request->session()->flash('flash_message', 'All OK');
 
         //Flash::message('Email sent PP');
         return redirect()->route('welcome');

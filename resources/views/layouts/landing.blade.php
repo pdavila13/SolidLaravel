@@ -292,9 +292,17 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
 
 <script src="js/all.js"></script>
 
-<script>
-    swal("Good job!", "You clicked the button!", "success")
-</script>
+@if(session()->has('flash_message'))
+    <script>
+        swal({
+            title: "CORRECT!",
+            text: "All right! Closing..",
+            timer: 2000,
+            type: "success",
+            confirmButtonText: "Close me NOW!"
+        });
+    </script>
+@endif
 
 @include('layouts.partials.flashmessage');
 
