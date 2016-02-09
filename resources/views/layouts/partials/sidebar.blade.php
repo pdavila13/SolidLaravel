@@ -45,6 +45,7 @@
                     <li><a href="#">Link in level 2</a></li>
                 </ul>
             </li>
+            <li><a href="pricing">Preus</a></li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

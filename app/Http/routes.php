@@ -38,6 +38,10 @@ Route::group(['middleware' => 'web','pjax'], function () {
         'uses' => 'InvoicesController@index'
     ]);
 
+    Route::get('/pricing', function() {
+       return view('pricing');
+    });
+
     Route::auth();
 
     Route::get('/home', 'HomeController@index');
