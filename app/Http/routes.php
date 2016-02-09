@@ -32,7 +32,11 @@ Route::group(['middleware' => 'web','pjax'], function () {
 
     Route::get('/',['as' => 'welcome', 'uses' => 'WelcomeController@Index']);
 
-    Route::get('/invoices', 'InvoicesController@index');
+
+    Route::get('/invoices', [
+        'middleware' => 'auth',
+        'uses' => 'InvoicesController@index'
+    ]);
 
     Route::auth();
 
