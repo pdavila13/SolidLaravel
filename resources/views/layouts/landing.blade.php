@@ -243,7 +243,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
 
         <div class="col-lg-7">
             <h3>Drop Us A Line</h3>
-            <!--{{Session::get('flash_message')}}-->
+            {{Session::get('notification')}}
             <br>
             <form role="form" action="sendContactEmail" method="post" enctype="plain">
                 {{ csrf_field() }}
@@ -288,6 +288,12 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     $('.carousel').carousel({
         interval: 3500
     })
+</script>
+
+<script src="js/all.js"></script>
+
+<script>
+    swal("Good job!", "You clicked the button!", "success")
 </script>
 
 @include('layouts.partials.flashmessage');
