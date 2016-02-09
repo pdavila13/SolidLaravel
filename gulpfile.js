@@ -23,7 +23,8 @@ elixir(function(mix) {
     mix.copy('bower_components/jquery-pjax/jquery.pjax.js','resources/assets/js')
 
     mix.scripts([
-       'sweetalert.dev.js'
+       'sweetalert.dev.js',
+        'jquery.pjax.js'
     ]);
 
     mix.styles([

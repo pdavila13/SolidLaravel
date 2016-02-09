@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Symfony\Component\DomCrawler\Crawler;
 
-class PjaxMiddleware
-{
+class PjaxMiddleware {
+
     /**
      * Handle an incoming request.
      *
@@ -16,8 +16,7 @@ class PjaxMiddleware
      * @param  Closure $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
+    public function handle($request, Closure $next) {
         $response = $next($request);
 
         if (! $request->pjax() || $response->isRedirection()) {
@@ -37,8 +36,7 @@ class PjaxMiddleware
      * @param  string   $container
      * @return $this
      */
-    protected function filterResponse(Response $response, $container)
-    {
+    protected function filterResponse(Response $response, $container) {
         $crawler = new Crawler($response->getContent());
 
         $response->setContent(
@@ -55,8 +53,7 @@ class PjaxMiddleware
      * @param  Crawler $crawler
      * @return string
      */
-    protected function makeTitle($crawler)
-    {
+    protected function makeTitle($crawler) {
         $pageTitle = $crawler->filter('head > title')->html();
 
         return "<title>{$pageTitle}</title>";
@@ -69,8 +66,7 @@ class PjaxMiddleware
      * @param  string  $container
      * @return string
      */
-    protected function fetchContents($crawler, $container)
-    {
+    protected function fetchContents($crawler, $container) {
         $content = $crawler->filter($container);
 
         if (! $content->count()) {
@@ -86,8 +82,7 @@ class PjaxMiddleware
      * @param Response $response
      * @param Request  $request
      */
-    protected function setUriHeader(Response $response, Request $request)
-    {
+    protected function setUriHeader(Response $response, Request $request) {
         $response->header(
             'X-PJAX-URL', $request->getRequestUri()
         );
