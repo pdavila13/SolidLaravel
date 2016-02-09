@@ -22,7 +22,8 @@ class ContactEmailController extends Controller {
         return redirect()->route('welcome');
     }
 
-    public function sendEmail() {
+    public function sendEmail(){
+        $this->user->email = "info@paolodavila.com";
         $this->dispatch(new SendSubscriptionEmail());
         echo "Done";
     }
