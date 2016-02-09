@@ -11,6 +11,7 @@ namespace App\Repositories;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Mockery\CountValidator\Exception;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class UserRepository
@@ -18,6 +19,9 @@ use Mockery\CountValidator\Exception;
  */
 abstract class Repository implements RepositoryInterface {
 
+    /**
+     * @var
+     */
     protected $model;
 
     /**
@@ -28,8 +32,14 @@ abstract class Repository implements RepositoryInterface {
         $this->model = $this->makeModel();
     }
 
+    /**
+     * @return mixed
+     */
     abstract function model();
 
+    /**
+     * @return mixed
+     */
     public function makeModel() {
         $model = App::make($this->model());
 
